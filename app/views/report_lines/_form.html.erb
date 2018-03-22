@@ -1,0 +1,52 @@
+<%= form_with(model: report_line, local: true) do |form| %>
+  <% if report_line.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(report_line.errors.count, "error") %> prohibited this report_line from being saved:</h2>
+
+      <ul>
+      <% report_line.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :so_num %>
+    <%= form.text_field :so_num, id: :report_line_so_num %>
+  </div>
+
+  <div class="field">
+    <%= form.label :client %>
+    <%= form.text_field :client, id: :report_line_client %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paid %>
+    <%= form.number_field :paid, id: :report_line_paid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unpaid %>
+    <%= form.number_field :unpaid, id: :report_line_unpaid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_paid %>
+    <%= form.number_field :total_paid, id: :report_line_total_paid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_unpaid %>
+    <%= form.number_field :total_unpaid, id: :report_line_total_unpaid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :monthly_report_id %>
+    <%= form.text_field :monthly_report_id, id: :report_line_monthly_report_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  so_num: MyString
+  client: MyString
+  paid: 1
+  unpaid: 1
+  total_paid: 1
+  total_unpaid: 1
+  monthly_report: one
+
+two:
+  so_num: MyString
+  client: MyString
+  paid: 1
+  unpaid: 1
+  total_paid: 1
+  total_unpaid: 1
+  monthly_report: two

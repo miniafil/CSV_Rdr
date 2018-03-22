@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Report Lines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>So num</th>
+      <th>Client</th>
+      <th>Paid</th>
+      <th>Unpaid</th>
+      <th>Total paid</th>
+      <th>Total unpaid</th>
+      <th>Monthly report</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @report_lines.each do |report_line| %>
+      <tr>
+        <td><%= report_line.so_num %></td>
+        <td><%= report_line.client %></td>
+        <td><%= report_line.paid %></td>
+        <td><%= report_line.unpaid %></td>
+        <td><%= report_line.total_paid %></td>
+        <td><%= report_line.total_unpaid %></td>
+        <td><%= report_line.monthly_report %></td>
+        <td><%= link_to 'Show', report_line %></td>
+        <td><%= link_to 'Edit', edit_report_line_path(report_line) %></td>
+        <td><%= link_to 'Destroy', report_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Report Line', new_report_line_path %>

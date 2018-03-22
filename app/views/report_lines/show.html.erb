@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>So num:</strong>
+  <%= @report_line.so_num %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @report_line.client %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @report_line.paid %>
+</p>
+
+<p>
+  <strong>Unpaid:</strong>
+  <%= @report_line.unpaid %>
+</p>
+
+<p>
+  <strong>Total paid:</strong>
+  <%= @report_line.total_paid %>
+</p>
+
+<p>
+  <strong>Total unpaid:</strong>
+  <%= @report_line.total_unpaid %>
+</p>
+
+<p>
+  <strong>Monthly report:</strong>
+  <%= @report_line.monthly_report %>
+</p>
+
+<%= link_to 'Edit', edit_report_line_path(@report_line) %> |
+<%= link_to 'Back', report_lines_path %>
