@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @monthly_report.client %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @monthly_report.paid %>
+</p>
+
+<p>
+  <strong>Unpaid:</strong>
+  <%= @monthly_report.unpaid %>
+</p>
+
+<p>
+  <strong>Period:</strong>
+  <%= @monthly_report.period %>
+</p>
+
+<p>
+  <strong>Report month:</strong>
+  <%= @monthly_report.report_month %>
+</p>
+
+<p>
+  <strong>Non deductable:</strong>
+  <%= @monthly_report.non_deductable %>
+</p>
+
+<p>
+  <strong>Remaining balance:</strong>
+  <%= @monthly_report.remaining_balance %>
+</p>
+
+<%= link_to 'Edit', edit_monthly_report_path(@monthly_report) %> |
+<%= link_to 'Back', monthly_reports_path %>

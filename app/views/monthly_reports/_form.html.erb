@@ -1,0 +1,52 @@
+<%= form_with(model: monthly_report, local: true) do |form| %>
+  <% if monthly_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(monthly_report.errors.count, "error") %> prohibited this monthly_report from being saved:</h2>
+
+      <ul>
+      <% monthly_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :client %>
+    <%= form.text_field :client, id: :monthly_report_client %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paid %>
+    <%= form.number_field :paid, id: :monthly_report_paid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unpaid %>
+    <%= form.number_field :unpaid, id: :monthly_report_unpaid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :period %>
+    <%= form.date_select :period, id: :monthly_report_period %>
+  </div>
+
+  <div class="field">
+    <%= form.label :report_month %>
+    <%= form.text_field :report_month, id: :monthly_report_report_month %>
+  </div>
+
+  <div class="field">
+    <%= form.label :non_deductable %>
+    <%= form.number_field :non_deductable, id: :monthly_report_non_deductable %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remaining_balance %>
+    <%= form.number_field :remaining_balance, id: :monthly_report_remaining_balance %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

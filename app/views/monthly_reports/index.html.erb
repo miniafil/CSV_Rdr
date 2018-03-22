@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Monthly Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Paid</th>
+      <th>Unpaid</th>
+      <th>Period</th>
+      <th>Report month</th>
+      <th>Non deductable</th>
+      <th>Remaining balance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @monthly_reports.each do |monthly_report| %>
+      <tr>
+        <td><%= monthly_report.client %></td>
+        <td><%= monthly_report.paid %></td>
+        <td><%= monthly_report.unpaid %></td>
+        <td><%= monthly_report.period %></td>
+        <td><%= monthly_report.report_month %></td>
+        <td><%= monthly_report.non_deductable %></td>
+        <td><%= monthly_report.remaining_balance %></td>
+        <td><%= link_to 'Show', monthly_report %></td>
+        <td><%= link_to 'Edit', edit_monthly_report_path(monthly_report) %></td>
+        <td><%= link_to 'Destroy', monthly_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Monthly Report', new_monthly_report_path %>

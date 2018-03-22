@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: MyString
+  paid: 1
+  unpaid: 1
+  period: 2018-03-22
+  report_month: MyString
+  non_deductable: 1
+  remaining_balance: 1
+
+two:
+  client: MyString
+  paid: 1
+  unpaid: 1
+  period: 2018-03-22
+  report_month: MyString
+  non_deductable: 1
+  remaining_balance: 1
