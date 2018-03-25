@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InflowSqlReader</title>
+    <%= csrf_meta_tags %>
+    <!-- 使用 custom layout 製作 A4 CSS Layout -->
+    <%= stylesheet_link_tag    'application', 'monthly_report_layout', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+    <!-- 報表產生 去除 navbar -->
+    <%#= render "/common/navbar" %>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+  </body>
+</html>

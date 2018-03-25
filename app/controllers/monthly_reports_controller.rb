@@ -1,6 +1,9 @@
 class MonthlyReportsController < ApplicationController
   before_action :set_monthly_report, only: [:show, :edit, :update, :destroy]
 
+  # 自訂 layout
+  layout 'monthly_report_layout', only: [:show]
+
   # GET /monthly_reports
   # GET /monthly_reports.json
   def index
@@ -10,6 +13,7 @@ class MonthlyReportsController < ApplicationController
   # GET /monthly_reports/1
   # GET /monthly_reports/1.json
   def show
+    @report_lines = @monthly_report.report_lines
   end
 
   # GET /monthly_reports/new
@@ -59,6 +63,16 @@ class MonthlyReportsController < ApplicationController
       format.html { redirect_to monthly_reports_url, notice: 'Monthly report was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    begin
+      # monthly_report.rb model - import method
+      MonthlyReport.import(params[:file])
+        redirect_to monthly_reports_path, notice: "成功"
+      rescue
+        redirect_to monthly_reports_path, notice: "失敗"
+      end
   end
 
   private

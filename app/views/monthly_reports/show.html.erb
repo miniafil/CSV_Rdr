@@ -1,39 +1,120 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @monthly_report.client %>
-</p>
 
-<p>
-  <strong>Paid:</strong>
-  <%= @monthly_report.paid %>
-</p>
 
-<p>
-  <strong>Unpaid:</strong>
-  <%= @monthly_report.unpaid %>
-</p>
 
-<p>
-  <strong>Period:</strong>
-  <%= @monthly_report.period %>
-</p>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<p>
-  <strong>Report month:</strong>
-  <%= @monthly_report.report_month %>
-</p>
 
-<p>
-  <strong>Non deductable:</strong>
-  <%= @monthly_report.non_deductable %>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice-title">
+    			<h2>請款單</h2>
+          <h4 class="pull-right"></h4>
+    		</div>
+    		<hr>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    				<strong>客戶：<%= @monthly_report.client %></strong><br>
 
-<p>
-  <strong>Remaining balance:</strong>
-  <%= @monthly_report.remaining_balance %>
-</p>
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+        			<strong><h5>和盛水電材料有限公司</h5></strong>
+    					電話：(07)351-3132<br>
+    					傳真：(07)353-0178<br>
 
-<%= link_to 'Edit', edit_monthly_report_path(@monthly_report) %> |
-<%= link_to 'Back', monthly_reports_path %>
+    				</address>
+    			</div>
+    		</div>
+
+    	</div>
+    </div>
+
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong>訂單明細</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                  <tr>
+                      <td class="thick-line"><strong>#</strong></td>
+        							<td class="thick-line"><strong>訂單號碼</strong></td>
+        							<td class="text-center thick-line"><strong></strong></td>
+        							<td class="text-center thick-line"><strong>已付金額</strong></td>
+        							<td class="text-right thick-line"><strong>未付金額</strong></td>
+                  </tr>
+    						</thead>
+    						<tbody>
+    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+                  <% @report_lines.each_with_index do |line, index| %>
+                    <tr>
+                      <td class="thin-line"><%= index + 1 %></td>
+                      <td class="thin-line"><%= line.so_num %></td>
+                      <td class="text-center thin-line"><%#= line.client %></td>
+                      <td class="text-center thin-line"><%= line.paid %></td>
+                      <td class="text-right thin-line"><%= line.unpaid %></td>
+                    </tr>
+                  <% end %>
+                  <tr class="active">
+                    <td class="thin-line text-right"></td>
+                    <td class="thin-line"></td>
+                    <td class="thin-line text-center"><strong>總計：</strong></td>
+                    <td class="thin-line text-center"><%= number_to_currency(@monthly_report.paid, precision: 0) %></td>
+                    <td class="thin-line text-right"><%= number_to_currency(@monthly_report.unpaid, precision: 0) %></td>
+                  </tr>
+                  <tr class="active">
+                    <td class="thick-line"></td>
+    								<td class="thick-line text-right"><strong>本期貨款：</strong></td>
+                    <td class="thick-line text-left"><%= number_to_currency(@monthly_report.unpaid - @monthly_report.non_deductable, precision: 0) %></td>
+    								<td class="thick-line text-center"></td>
+    								<td class="thick-line text-right"></td>
+    							</tr>
+
+    							<tr class="active">
+                    <td class="no-line"></td>
+    								<td class="no-line text-right"><strong>現金價：</strong></td>
+                    <td class="no-line text-left"><%= number_to_currency(@monthly_report.non_deductable, precision: 0) %></td>
+    								<td class="no-line text-center"></td>
+    								<td class="no-line text-right"></td>
+    							</tr>
+    							<tr class="active">
+                    <td class="no-line"></td>
+    								<td class="no-line text-right"><strong>稅 金：</strong></td>
+    								<td class="no-line text-left"><%= number_to_currency(@monthly_report.tax, precision: 0) %></td>
+    								<td class="no-line text-center"></td>
+    								<td class="no-line text-right"></td>
+    							</tr>
+                  <tr class="active">
+                    <td class="no-line"></td>
+                    <td class="no-line text-right"><strong>前期未收：</strong></td>
+
+                    <td class="no-line text-left"><%= number_to_currency(@monthly_report.remaining_balance, precision: 0) %></td>
+                    <td class="no-line text-center"></td>
+                    <td class="no-line text-right"></td>
+                  </tr>
+                  <tr class="active">
+                    <td class="no-line""></td>
+                    <td class="no-line text-right"><strong><i>應收總計：</i></strong></td>
+
+                    <td class="no-line"></td>
+                    <td class="no-line text-center"></td>
+                    <td class="no-line text-right"></td>
+                  </tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>

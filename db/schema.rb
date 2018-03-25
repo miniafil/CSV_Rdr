@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322020828) do
+ActiveRecord::Schema.define(version: 20180323142532) do
 
   create_table "monthly_reports", force: :cascade do |t|
     t.string "client"
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 20180322020828) do
     t.integer "remaining_balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tax", default: 0
+  end
+
+  create_table "report_lines", force: :cascade do |t|
+    t.string "so_num"
+    t.string "client"
+    t.integer "paid"
+    t.integer "unpaid"
+    t.integer "total_paid"
+    t.integer "total_unpaid"
+    t.integer "monthly_report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["monthly_report_id"], name: "index_report_lines_on_monthly_report_id"
   end
 
 end
